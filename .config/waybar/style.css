@@ -1,0 +1,106 @@
+* {
+  font-family: "JetBrainsMono Nerd Font", "Roboto", "Helvetica", "Arial", sans-serif;
+  font-size: 13px;
+  font-weight: bold;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(10, 10, 15, 0.5);
+  color: #ffffff;
+  border-radius: 15px;
+  transition-property: background-color;
+  transition-duration: .5s;
+}
+
+#custom-launcher, #custom-status, #custom-notifications, #workspaces, #mpris, #clock, #cpu, #memory, #bluetooth, #pulseaudio, #network, #battery, #custom-power {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0px 12px;
+  margin: 4px 3px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Specific module colors */
+#custom-launcher {
+  color: #1793d1; /* Arch Blue */
+  font-size: 16px;
+  padding-left: 10px;
+  padding-right: 15px;
+}
+
+#custom-status {
+  color: #00ff41;
+}
+
+#custom-notifications {
+  color: #f1fa8c;
+}
+
+#workspaces button {
+  padding: 0 5px;
+  color: #ffffff;
+  background: transparent;
+  border: none;
+  text-shadow: none;
+}
+
+#workspaces button.active {
+  color: #1793d1;
+  background: rgba(23, 147, 209, 0.2);
+  border-radius: 8px;
+}
+
+#workspaces button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+}
+
+#clock {
+  color: #f1fa8c;
+  font-weight: bold;
+}
+
+#mpris {
+  color: #bd93f9;
+}
+
+#cpu {
+  color: #ffb86c;
+}
+
+#memory {
+  color: #ff79c6;
+}
+
+#bluetooth {
+  color: #66ccff;
+}
+
+#pulseaudio {
+  color: #8be9fd;
+}
+
+#network {
+  color: #50fa7b;
+}
+
+#battery {
+  color: #ff5555;
+}
+
+#battery.charging {
+  color: #50fa7b;
+}
+
+#custom-power {
+  color: #ff5555;
+  font-size: 14px;
+}
+
+/* Animations and Hovers */
+#custom-launcher:hover, #custom-status:hover, #custom-notifications:hover, #workspaces:hover, #mpris:hover, #clock:hover, #cpu:hover, #memory:hover, #bluetooth:hover, #pulseaudio:hover, #network:hover, #battery:hover, #custom-power:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+}

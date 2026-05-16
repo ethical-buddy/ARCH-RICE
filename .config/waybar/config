@@ -1,0 +1,128 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 30,
+  "margin-top": 8,
+  "margin-left": 10,
+  "margin-right": 10,
+  "spacing": 4,
+
+  "modules-left": ["custom/launcher", "custom/status", "hyprland/workspaces", "mpris"],
+  "modules-center": ["clock"],
+  "modules-right": [
+    "cpu",
+    "memory",
+    "bluetooth",
+    "pulseaudio",
+    "network",
+    "battery",
+    "custom/notifications",
+    "custom/power"
+  ],
+
+  "custom/launcher": {
+    "format": "  ",
+    "on-click": "rofi -show drun",
+    "tooltip": false
+  },
+
+  "custom/status": {
+    "exec": "cat /tmp/panic_mode 2>/dev/null || echo 'ONLINE'",
+    "interval": "once",
+    "signal": 8,
+    "format": "󰒄 {}",
+    "tooltip": false
+  },
+
+  "hyprland/workspaces": {
+    "format": "{icon}",
+    "on-click": "activate",
+    "format-icons": {
+      "1": "",
+      "2": "",
+      "3": "",
+      "4": "",
+      "5": "",
+      "urgent": "",
+      "active": "",
+      "default": ""
+    },
+    "sort-by-number": true
+  },
+
+  "mpris": {
+    "format": "{player_icon} {title}",
+    "format-paused": " {status_icon} <i>{title}</i>",
+    "player-icons": {
+      "default": "▶",
+      "spotify": "",
+      "mpv": "🎵"
+    },
+    "status-icons": {
+      "paused": "⏸"
+    },
+    "max-length": 30
+  },
+
+  "clock": {
+    "format": " {:%H:%M:%S}",
+    "interval": 1,
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+  },
+
+  "cpu": {
+    "format": "󰍛 {usage}%",
+    "interval": 2
+  },
+
+  "memory": {
+    "format": "󰾆 {percentage}%"
+  },
+
+  "bluetooth": {
+    "format": " {status}",
+    "format-connected": " {device_alias}",
+    "format-disabled": " Off",
+    "on-click": "/home/suryansh/.config/hypr/scripts/bt_toggle.sh"
+  },
+
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "format-muted": "󰝟",
+    "format-icons": {
+      "default": ["󰕿", "󰖀", "󰕾"]
+    },
+    "on-click": "pavucontrol"
+  },
+
+  "network": {
+    "format-wifi": " ",
+    "format-ethernet": "󰈀 ",
+    "format-disconnected": "󰖪 ",
+    "tooltip-format": "{essid} ({signalStrength}%)",
+    "on-click": "/home/suryansh/.config/hypr/scripts/wifi_toggle.sh"
+  },
+
+  "battery": {
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󱐋 {capacity}%",
+    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"]
+  },
+
+  "custom/notifications": {
+    "format": "󰂚 ",
+    "on-click": "/home/suryansh/.config/hypr/scripts/notif_toggle.sh",
+    "on-click-right": "makoctl restore",
+    "tooltip": false
+  },
+
+  "custom/power": {
+    "format": "⏻ ",
+    "on-click": "hyprlock",
+    "tooltip": false
+  }
+}

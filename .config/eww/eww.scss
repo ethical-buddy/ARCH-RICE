@@ -1,0 +1,86 @@
+$bg: rgba(10, 10, 15, 0.85);
+$fg: #e6e6e6;
+$accent: #00ff41; 
+$red: #ff5555;
+$blue: #00ccff;
+
+* {
+  all: unset;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+}
+
+@keyframes glitch {
+  0% { text-shadow: 2px 2px $red, -2px -2px $blue; }
+  25% { text-shadow: -2px 2px $accent, 2px -2px $red; }
+  50% { text-shadow: 2px -2px $blue, -2px 2px $accent; }
+  75% { text-shadow: -2px -2px $red, 2px 2px $blue; }
+  100% { text-shadow: 2px 2px $accent, -2px -2px $red; }
+}
+
+.dashboard-window {
+  background-color: $bg;
+  border: 1px solid rgba(0, 255, 65, 0.3);
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(0, 255, 65, 0.1);
+}
+
+.main-box {
+  padding: 30px;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 900;
+  color: $accent;
+  margin-bottom: 25px;
+  animation: glitch 2s infinite;
+}
+
+.metric-box {
+  margin: 15px 0;
+}
+
+.metric-label {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 5px;
+}
+
+.metric-value-box {
+  margin-bottom: 5px;
+}
+
+.metric-value {
+  font-size: 15px;
+  font-weight: bold;
+  color: $fg;
+}
+
+scale.metric-bar {
+  trough {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    min-height: 6px;
+    min-width: 280px;
+    
+    highlight {
+      background-color: $accent;
+      border-radius: 5px;
+    }
+  }
+}
+
+.metric-bar.high highlight { background-color: $red; }
+.metric-bar.medium highlight { background-color: #f1fa8c; }
+
+.footer {
+  margin-top: 30px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 15px;
+}
+
+.footer-text {
+  font-size: 11px;
+  color: rgba(0, 255, 65, 0.5);
+  font-style: italic;
+}

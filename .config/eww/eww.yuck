@@ -1,0 +1,59 @@
+(defwidget metric [label value icon class]
+  (box :orientation "v" :class "metric-box" :space-evenly false
+    (box :orientation "h" :class "metric-value-box" :space-evenly false
+      (label :class "metric-label" :text "${icon} ${label}")
+      (box :hexpand true)
+      (label :class "metric-value" :text "${value}%")
+    )
+    (scale :min 0 :max 101 :active false :value value :class "metric-bar ${class}")
+  )
+)
+
+(defwidget body []
+  (box :class "main-box" :orientation "v" :space-evenly false
+    (label :class "title" :text "󰒄 SYSTEM_OVERRIDE_v4")
+    
+    (metric :label "CORE_PROCESSING" 
+            :value {round(EWW_CPU.avg, 0)} 
+            :icon "󰍛"
+            :class {EWW_CPU.avg > 80 ? "high" : EWW_CPU.avg > 50 ? "medium" : "low"})
+
+    (metric :label "VOLATILE_MEMORY" 
+            :value {round(EWW_RAM.used_mem_perc, 0)} 
+            :icon "󰾆"
+            :class {EWW_RAM.used_mem_perc > 80 ? "high" : EWW_RAM.used_mem_perc > 50 ? "medium" : "low"})
+
+    (metric :label "DATA_STORAGE" 
+            :value {round(EWW_DISK["/"].used_perc, 0)} 
+            :icon "󰋊"
+            :class "low")
+
+    (metric :label "POWER_CELL" 
+            :value {EWW_BATTERY["BAT0"].capacity} 
+            :icon {EWW_BATTERY["BAT0"].status == "Charging" ? "󱐋" : "󰁹"}
+            :class {EWW_BATTERY["BAT0"].capacity < 20 ? "high" : "low"})
+
+    (box :class "footer" :orientation "v" :space-evenly false :spacing 5
+      (box :orientation "h" :space-evenly true
+        (label :class "footer-text" :text "󰔏 TEMP: ${EWW_TEMPS["CORE_0"]}°C")
+        (label :class "footer-text" :text "󰥔 AUTH: GRANTED")
+      )
+      (label :class "footer-text" :text ">> SECURE_SHELL_ACTIVE [OK]")
+    )
+  )
+)
+
+(defwindow dashboard
+    :monitor 0
+    :geometry (geometry :x "0%"
+                        :y "0%"
+                        :width "400px"
+                        :height "550px"
+                        :anchor "center")
+    :stacking "fg"
+    :windowtype "dialog"
+    :wm-ignore true
+  (box :class "dashboard-window"
+    (body)
+  )
+)
